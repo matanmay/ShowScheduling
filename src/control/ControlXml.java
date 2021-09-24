@@ -74,17 +74,12 @@ public class ControlXml {
 								el.getElementsByTagName("maxInCapsule").item(0).getTextContent());
 							if(isUpdateColor(cl))
 							{
-								updateColor(c.getCityColor().toString(), cl); // doing update
-								//Needs to update events
-								int maxC = cl.getMaxInShow();
-								updateEventsByCity(c.getCityName(),maxC);
-								
-								
+								updateColor(c.getCityColor().toString(), cl); // doing update				
+								int maxC = cl.getMaxInShow(); 	//Needs to update events
+								updateEventsByCity(c.getCityName(),maxC);																
 							}
-							
-						
-							
-						if (!manipulateCustomer(c, Manipulation.INSERT) && 	!manipulateCustomer(c, Manipulation.UPDATE))
+																		
+						if (!manipulateCustomer(c, Manipulation.INSERT) && !manipulateCustomer(c, Manipulation.UPDATE))
 							errors++;
 					}
 				}
@@ -109,7 +104,6 @@ public class ControlXml {
 	    	try {
 				Class.forName(Consts.JDBC_STR);
 			} catch (ClassNotFoundException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 			try (Connection conn = DriverManager.getConnection(util.Consts.CONN_STR);
@@ -118,17 +112,15 @@ public class ControlXml {
 				stmnt.setInt(i++, c.getMaxInShow());		
 				stmnt.setInt(i++, c.getMaxInCapsule());
 				stmnt.setString(i++, colorName);
-				stmnt.executeUpdate();		
-			
+				stmnt.executeUpdate();				
 	    	return true;
 	    } catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 			return false;    
 	    
 	   }
-	    
+	   
 	    
 	    public boolean manipulateCustomer(City c, Manipulation manipulation) {
 	    	try {
@@ -159,7 +151,6 @@ public class ControlXml {
 	    	String str = c.getCityColor().toString();
 	    	str = str.toLowerCase(); 
 	    	int colorId=0; 	   
-
 	    	
 	    	if(str.equals("green"))
 	    	{
@@ -181,8 +172,7 @@ public class ControlXml {
 				stmnt.setInt(i++, colorId);		
 				stmnt.setString(i++, c.getCityName());
 				stmnt.executeUpdate();		
-			}
-	    	
+			}	    	
 	    }
 	    
 	    //This method get Color and return if need to update
@@ -197,7 +187,6 @@ public class ControlXml {
 	    		}
 	    	}
 	    	return true;
-
 	    }
 	    
 	    public void updateEventsByCity(String cityName, int maxC)
@@ -223,13 +212,11 @@ public class ControlXml {
     			}
     		} catch (ClassNotFoundException e) {
     			e.printStackTrace();
-    		}
-	    	
+    		}    	
 	    	
 	    }
 	
-	    
-	    
+	    	    
 	    public void updateTheStatusDate(int showId, int theaterId) throws SQLException, ClassNotFoundException
 	    {    	    	
 	    	Class.forName(Consts.JDBC_STR);
@@ -241,10 +228,9 @@ public class ControlXml {
 				stmnt.setInt(i++, theaterId);
 				stmnt.executeUpdate();		
 	    	
-			}
-			
+			}			
 	    }
-	    
+    
 	    
 	    public void updateMaxCapcity(int theaterID, int maxCap) throws SQLException, ClassNotFoundException
 	    {
