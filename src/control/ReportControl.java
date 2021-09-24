@@ -31,9 +31,6 @@ public class ReportControl
 	}
 	
 	
-	
-	
-	
 	/**
 	 * Gets all the shows from the database
 	 * @return ArrayList of Shows
@@ -42,7 +39,6 @@ public class ReportControl
 	public ArrayList<Agent> getAgents() 
 	{
 		ArrayList<Agent> agentList = new ArrayList<Agent>();
-
 		try {
 			Class.forName(Consts.JDBC_STR);
 			try (Connection conn = DriverManager.getConnection(util.Consts.CONN_STR);
@@ -64,7 +60,6 @@ public class ReportControl
 	
 	public JFrame produceReport(Agent agentNum, Date start, Date end) 
 	{
-		//java.lang.System.out.println(calcArtistPrecent(1,agentNum.getId()));
 		try {
 			Class.forName(Consts.JDBC_STR);
 			try (Connection conn = DriverManager.getConnection(Consts.CONN_STR))
@@ -95,11 +90,8 @@ public class ReportControl
 		return null;
 	}
 
-
 	
-	
-	
-	//this method calculate all artist in show
+	//This method calculates (sums up) all artist in show
 	private int calcArtistInShow(int show_id)
 	{
 		int counter=0;
@@ -124,7 +116,7 @@ public class ReportControl
 	}
 	
 	
-	//this method calculate all artist in show by agent
+	//This method calculates (sums up) all artist in show by agent
 	public int calcArtistOfAgentInShow(int show_id, int agent_id)
 	{
 		int counter=0;
@@ -149,7 +141,7 @@ public class ReportControl
 		return counter;
 	}
 	
-	//this method gets Agent and Show and return the present of artist by agent in show
+	//This method gets Agent and Show and returns the precent of artist by agent in show
 	public double calcArtistPrecent(int show_ID , int agent_ID) 
 	{
 		int byAgent = calcArtistOfAgentInShow(show_ID,agent_ID);
@@ -157,6 +149,5 @@ public class ReportControl
 		return (double) byAgent * 100/allArtist;
 	
 	}
-
 	
 }
