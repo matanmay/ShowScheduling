@@ -18,9 +18,7 @@ import entity.User;
 import util.Consts;
 
 public class LoginControl 
-{
-	
-	
+{	
 	public static LoginControl instance;
 	public static LoginControl getInstance() 
 	{
@@ -43,8 +41,7 @@ public class LoginControl
 		this.loginCustumer = loginCustumer;
 	}
 
-
-	//This method get all custumers from DB
+	//This method get all the customers from DB
 	public ArrayList<User> getAllUsers()
 	{
 		ArrayList<User> myCutstumers = new ArrayList<>();
@@ -67,7 +64,7 @@ public class LoginControl
 		
 	}
 	
-	//This method return true if the user is agent
+	//This method returns true if the user is an agent
 	public boolean checkAgent(User u)
 	{
 		ArrayList<Agent> agents = ReportControl.getInstance().getAgents();
@@ -81,7 +78,7 @@ public class LoginControl
 		return false;
 	}
 	
-	//This method get user and return the agent
+	//This method gets user and returns his agent
 	public Agent getAgent(User u)
 	{
 		ArrayList<Agent> agents = ReportControl.getInstance().getAgents();
@@ -95,5 +92,4 @@ public class LoginControl
 		return null;
 	}
 	
-
 }
